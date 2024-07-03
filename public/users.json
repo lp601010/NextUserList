@@ -1,0 +1,38 @@
+[
+    {
+      "id": 1,
+      "name": "Tony Reichert",
+      "age": "29",
+      "avatar": "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+      "email": "tony@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Zoey Lang",
+      "age": "25",
+      "avatar": "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+      "email": "zoey@example.com"
+    },
+    {
+      "id": 3,
+      "name": "Jane Fisher",
+      "age": "22",
+      "avatar": "https://i.pravatar.cc/150?u=a04258114e29026702d",
+      "email": "jane@example.com"
+    },
+    {
+      "id": 4,
+      "name": "William Howard",
+      "age": "28",
+      "avatar": "https://i.pravatar.cc/150?u=a048581f4e29026701d",
+      "email": "william@example.com"
+    },
+    {
+      "id": 5,
+      "name": "Kristen Copper",
+      "age": "24",
+      "avatar": "https://i.pravatar.cc/150?u=a092581d4ef9026700d",
+      "email": "kristen@example.com"
+    }
+  ]
+  
