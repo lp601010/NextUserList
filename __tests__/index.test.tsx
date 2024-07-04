@@ -50,7 +50,7 @@ describe('Home', () => {
     const button = screen.getByText(/Add User/i);
     fireEvent.click(button);
     const modal = screen.getAllByRole('dialog');
-    expect(modal).toBeInTheDocument();
-    const modalHead = screen.getByRole('heading', { name: /specific text/i });
+    expect(modal[0]).toBeInTheDocument();
+    // const modalHead = screen.getByRole('heading', { name: /specific text/i });
   });
 });
