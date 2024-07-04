@@ -24,6 +24,8 @@ git clone https://github.com/lp601010/InYouUsers.git
 
 cd InYouUsers
 
+npm instal
+
 npm run dev
 ```
 
