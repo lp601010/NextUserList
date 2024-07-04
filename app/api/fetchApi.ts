@@ -1,5 +1,5 @@
 import { Dispatch, ThunkDispatch, UnknownAction } from '@reduxjs/toolkit';
-import { UserType, addUser, UserState } from '../redux/features/user-slice';
+import { UserType, putUser, UserState } from '../redux/features/user-slice';
 
 async function fetchData(url: string): Promise<Response | void> {
   try {
@@ -34,12 +34,12 @@ export const fetchUsers = async (
   > &
     Dispatch<UnknownAction>
 ) => {
-  const response = await fetch('/users.json');
-  const data = await response.json();
+  const response = await fetchData('/users.json');
+  const data = await response?.json();
   const users = data as UserType[];
 
   for (let user of users) {
     user.avatar = await getRandomImage();
-    dispatch(addUser(user));
+    dispatch(putUser(user));
   }
 };

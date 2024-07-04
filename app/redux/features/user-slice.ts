@@ -12,6 +12,7 @@ export type UserType = {
 export type UserState = {
   userList: UserType[];
   removeToEmpty: boolean;
+  editingUserId?: number;
 };
 
 const initialState: UserState = {
@@ -23,10 +24,14 @@ export const users = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    addUser: (state, action: PayloadAction<UserType>) => {
+    putUser: (state, action: PayloadAction<UserType>) => {
       const user = state.userList.find((user) => user.id === action.payload.id);
       if (!user) {
         state.userList.push(action.payload);
+      } else {
+        state.userList = state.userList.map((user) =>
+          user.id === action.payload.id ? action.payload : user
+        );
       }
     },
     removeUser: (state, action: PayloadAction<number>) => {
@@ -35,14 +40,11 @@ export const users = createSlice({
         state.removeToEmpty = true;
       }
     },
-    editUser: (state, action: PayloadAction<UserType>) => {
-      const index = state.userList.findIndex((user) => user.id === action.payload.id);
-      if (index !== -1) {
-        state.userList[index] = action.payload;
-      }
+    setEditingUserId: (state, action: PayloadAction<number | undefined>) => {
+      state.editingUserId = action.payload;
     }
   }
 });
 
-export const { addUser, removeUser, editUser } = users.actions;
+export const { putUser, removeUser, setEditingUserId } = users.actions;
 export default users.reducer;

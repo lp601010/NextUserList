@@ -15,7 +15,7 @@ import {
 import { EditIcon } from '../icons/EditIcon';
 import { DeleteIcon } from '../icons/DeleteIcon';
 import { useDispatch, useSelector } from 'react-redux';
-import { UserType, removeUser } from '../redux/features/user-slice';
+import { UserType, removeUser, setEditingUserId } from '../redux/features/user-slice';
 import { AppDispatch, RootState } from '../redux/store';
 import { fetchUsers } from '../api/fetchApi';
 
@@ -61,7 +61,10 @@ export default function UserTable({ onEdit }: { onEdit: () => void }) {
             <Tooltip content='Edit user'>
               <button
                 className='text-lg text-default-400 cursor-pointer active:opacity-50'
-                onClick={onEdit}
+                onClick={() => {
+                  dispatch(setEditingUserId(user.id));
+                  onEdit();
+                }}
               >
                 <EditIcon />
               </button>
