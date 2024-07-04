@@ -9,10 +9,10 @@ import {
 } from '@nextui-org/react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { UserType, putUser } from '../redux/features/user-slice';
+import { UserType, putUser, setEditingUserId } from '../redux/features/user-slice';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../redux/store';
-
+import { putUserWithRandomAvatar } from '../api/fetchApi';
 interface UserModalProps {
   isOpen: boolean;
   onOpenChange: (isOpen: boolean) => void;
@@ -55,11 +55,15 @@ export default function UserModal({ isOpen, onOpenChange, isAdd }: UserModalProp
   }, [isAdd, editingUserId]);
 
   const onSubmit = (data: UserType) => {
+    const newId = maxId + 1;
     if (isAdd) {
-      dispatch(putUser({ ...data, id: maxId + 1 }));
+      dispatch(putUser({ ...data, id: newId }));
+      dispatch(putUserWithRandomAvatar({ ...data, id: newId }));
     } else {
       dispatch(putUser(data));
     }
+    dispatch(setEditingUserId(undefined));
+    reset(defaultValues);
     onOpenChange(false);
   };
 
@@ -78,7 +82,7 @@ export default function UserModal({ isOpen, onOpenChange, isAdd }: UserModalProp
         onSubmit={handleSubmit(onSubmit)}
       >
         <ModalContent>
-          {(onClose) => (
+          {() => (
             <>
               <ModalHeader className='flex flex-col gap-1'>
                 {isAdd ? 'Add User' : 'Edit User'}

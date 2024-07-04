@@ -1,4 +1,4 @@
-import { Dispatch, ThunkDispatch, UnknownAction } from '@reduxjs/toolkit';
+import { Action, Dispatch, ThunkAction, ThunkDispatch, UnknownAction } from '@reduxjs/toolkit';
 import { UserType, putUser, UserState } from '../redux/features/user-slice';
 
 async function fetchData(url: string): Promise<Response | void> {
@@ -24,6 +24,14 @@ async function getRandomImage() {
   return response?.url;
 }
 
+export const putUserWithRandomAvatar =
+  (user: UserType): ThunkAction<void, { userReducer: UserState }, unknown, Action<string>> =>
+  async (dispatch) => {
+    dispatch(putUser(user));
+    const avatar = await getRandomImage();
+    dispatch(putUser({ ...user, avatar }));
+  };
+
 export const fetchUsers = async (
   dispatch: ThunkDispatch<
     {
@@ -39,7 +47,6 @@ export const fetchUsers = async (
   const users = data as UserType[];
 
   for (let user of users) {
-    user.avatar = await getRandomImage();
-    dispatch(putUser(user));
+    dispatch(putUserWithRandomAvatar(user));
   }
 };
