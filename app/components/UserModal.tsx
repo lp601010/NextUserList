@@ -71,7 +71,7 @@ export default function UserModal({ isOpen, onOpenChange, isAdd }: UserModalProp
     <Modal
       isOpen={isOpen}
       onOpenChange={onOpenChange}
-      placement='center'
+      placement='top-center'
       isDismissable={false}
       onClose={() => {
         reset(defaultValues);
