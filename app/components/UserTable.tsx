@@ -9,13 +9,15 @@ import {
   TableCell,
   User,
   Tooltip,
-  Spinner
+  Spinner,
+  Link
 } from '@nextui-org/react';
 import { EditIcon } from '../icons/EditIcon';
 import { DeleteIcon } from '../icons/DeleteIcon';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUser, UserType } from '../redux/features/user-slice';
+import { UserType, removeUser } from '../redux/features/user-slice';
 import { AppDispatch, RootState } from '../redux/store';
+import { fetchUsers } from '../api/fetchApi';
 
 const columns = [
   { name: 'NAME', uid: 'name' },
@@ -25,37 +27,27 @@ const columns = [
 
 export default function UserTable() {
   const dispatch = useDispatch<AppDispatch>();
-  const { userList } = useSelector((state: RootState) => state.userReducer);
-
-  async function getRandomImage() {
-    const response = await fetch('https://picsum.photos/150');
-    return response.url;
-  }
+  const { userList, removeToEmpty } = useSelector((state: RootState) => state.userReducer);
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      const response = await fetch('/users.json');
-      const data = await response.json();
-      const users = data as UserType[];
-
-      for (let user of users) {
-        user.avatar = await getRandomImage();
-        dispatch(addUser(user));
-      }
-    };
-
-    fetchUsers();
+    fetchUsers(dispatch);
   }, [dispatch]);
 
   const renderCell = React.useCallback((user: UserType, columnKey: React.Key) => {
     const cellValue = user[columnKey as keyof UserType];
-
     switch (columnKey) {
       case 'name':
         return (
           <User
-            avatarProps={{ radius: 'lg', src: user.avatar }}
-            description={user.email}
+            avatarProps={{ radius: 'lg', src: user.avatar || '' }}
+            description={
+              <>
+                <Link href={`mailto:${user.email}`} size='sm' isExternal>
+                  {user.email}
+                </Link>
+                <div>Tel: {user.phone}</div>
+              </>
+            }
             name={cellValue}
           >
             {user.email}
@@ -72,9 +64,12 @@ export default function UserTable() {
               </span>
             </Tooltip>
             <Tooltip color='danger' content='Delete user'>
-              <span className='text-lg text-danger cursor-pointer active:opacity-50'>
+              <button
+                className='text-lg text-danger cursor-pointer active:opacity-50'
+                onClick={() => dispatch(removeUser(user.id))}
+              >
                 <DeleteIcon />
-              </span>
+              </button>
             </Tooltip>
           </div>
         );
@@ -84,14 +79,15 @@ export default function UserTable() {
   }, []);
 
   return (
-    <Table aria-label='User list' className='min-w-0'>
+    <Table aria-label='User list' className='min-w-0' style={{ maxHeight: '70vh' }}>
       <TableHeader columns={columns}>
         {(column) => <TableColumn key={column.uid}>{column.name}</TableColumn>}
       </TableHeader>
       <TableBody
         items={userList}
-        isLoading={userList.length === 0}
+        isLoading={userList.length === 0 && !removeToEmpty}
         loadingContent={<Spinner label='loading...' color='default' labelColor='foreground' />}
+        emptyContent={'Everybody went home.'}
       >
         {(item) => (
           <TableRow key={item.id}>

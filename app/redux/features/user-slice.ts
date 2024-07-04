@@ -6,14 +6,17 @@ export type UserType = {
   age: string;
   avatar?: string;
   email: string;
+  phone: string;
 };
 
-type UserState = {
+export type UserState = {
   userList: UserType[];
+  removeToEmpty: boolean;
 };
 
 const initialState: UserState = {
-  userList: []
+  userList: [],
+  removeToEmpty: false
 };
 
 export const users = createSlice({
@@ -28,6 +31,9 @@ export const users = createSlice({
     },
     removeUser: (state, action: PayloadAction<number>) => {
       state.userList = state.userList.filter((user) => user.id !== action.payload);
+      if (state.userList.length === 0) {
+        state.removeToEmpty = true;
+      }
     },
     editUser: (state, action: PayloadAction<UserType>) => {
       const index = state.userList.findIndex((user) => user.id === action.payload.id);

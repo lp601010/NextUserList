@@ -5,11 +5,7 @@ import Image from 'next/image';
 
 const NavBarComponent: React.FC = () => {
   return (
-    <Navbar
-      maxWidth='full'
-      position='sticky'
-      className='bg-white dark:bg-[#18181B] shadow-sm w-screen'
-    >
+    <Navbar maxWidth='full' position='sticky' className='bg-white dark:bg-[#18181B] shadow-sm'>
       <NavbarBrand>
         <a href='https://inyoumarket.com/'>
           <Image
