@@ -1,7 +1,7 @@
 <div align="center">
 <img src="./public/logo.png" alt="icon"/>
 <h1 align="center">InYouUsers</h1>
-A simple user mangement project
+A simple user mangement project for empoyment testing
 
 Supported by React v18/Next v14/Redux/Nextui/react-hook-form
 
@@ -14,8 +14,9 @@ Supported by React v18/Next v14/Redux/Nextui/react-hook-form
 - Auto-incrementing user IDs to prevent duplicate data.
 - Support for mobile device display
 - Distinguish between empty users and loading status
-- Use husky + prettier + eslint + lint-staged to automatically format source code and check code quality
+- husky + prettier + eslint + lint-staged to automatically format source code and check code quality
 - light and dark themes.
+- Strict global type constraints protect user data structure.
 
 ## How to develop
 
