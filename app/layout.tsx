@@ -2,8 +2,6 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { NextUIProvider } from '@nextui-org/react';
-import ReduxProvider from './redux/provider';
-import NavBarComponent from './components/NavBarComponent';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,14 +25,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <ReduxProvider>
-          <NextUIProvider>
-            <NextThemesProvider attribute='class' defaultTheme='black'>
-              <NavBarComponent />
-              <main>{children}</main>
-            </NextThemesProvider>
-          </NextUIProvider>
-        </ReduxProvider>
+        <NextUIProvider>
+          <NextThemesProvider attribute='class' defaultTheme='black'>
+            {children}
+          </NextThemesProvider>
+        </NextUIProvider>
       </body>
     </html>
   );

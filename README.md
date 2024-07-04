@@ -10,6 +10,7 @@ Supported by React v18/Next v14/Redux/Nextui/react-hook-form
 ## Features
 
 - Fetch random user avatars asynchronously from [dummy api](https://jsonplaceholder.typicode.com/users) through redux thunk action to avoid data delay.
+- API request encapsulation and error handling to avoid global errors.
 - Basic form validation logic.
 - Auto-incrementing user IDs to prevent duplicate data.
 - Support for mobile device display
@@ -23,10 +24,10 @@ Supported by React v18/Next v14/Redux/Nextui/react-hook-form
 ```shell
 git clone https://github.com/lp601010/InYouUsers.git
 
-cd InYouUsers
+cd in-you-users
 
 npm instal
-
+npm run prepare
 npm run dev
 ```
 
