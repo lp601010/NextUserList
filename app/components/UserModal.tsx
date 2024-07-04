@@ -108,7 +108,7 @@ export default function UserModal({ isOpen, onOpenChange, isAdd }: UserModalProp
                   />
                 </div>
                 <Input
-                  type='email'
+                  type='text'
                   label='Email'
                   inputMode='email'
                   isRequired={true}
