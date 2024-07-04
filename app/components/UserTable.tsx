@@ -65,6 +65,7 @@ export default function UserTable({ onEdit }: { onEdit: () => void }) {
                   dispatch(setEditingUserId(user.id));
                   onEdit();
                 }}
+                data-testid={'editButton'}
               >
                 <EditIcon />
               </button>

@@ -4,7 +4,7 @@ import Home from '../app/page';
 import NavBarComponent from '../app/components/NavBarComponent';
 import { http, HttpResponse } from 'msw';
 import { setupServer } from 'msw/node';
-
+import userEvent from '@testing-library/user-event';
 const server = setupServer(
   http.get('/users.json', () => {
     return HttpResponse.json([
@@ -41,16 +41,36 @@ describe('NavBarComponent', () => {
 });
 
 describe('Home', () => {
-  it('renders without crashing', () => {
-    render(<Home />);
-  });
-
-  it('opens the modal and sets isAdd to true when AddUserButton is clicked', () => {
+  it('Add user test', () => {
     render(<Home />);
     const button = screen.getByText(/Add User/i);
     fireEvent.click(button);
     const modal = screen.getAllByRole('dialog');
     expect(modal[0]).toBeInTheDocument();
-    // const modalHead = screen.getByRole('heading', { name: /specific text/i });
+    const elements = screen.getAllByText('Add User');
+    const headerElement = elements.find((element) =>
+      element.closest('header.py-4.px-6.flex-initial.text-large.font-semibold.flex.flex-col.gap-1')
+    );
+    expect(headerElement).toHaveTextContent('Add User');
+  });
+  it('opens the modal by edit button, and save new user infomation.', async () => {
+    render(<Home />);
+    const button = screen.getByTestId(/editButton/i);
+    fireEvent.click(button);
+    const modal = screen.getAllByRole('dialog');
+    expect(modal[0]).toBeInTheDocument();
+    const elements = screen.getAllByText('Edit User');
+    const headerElement = elements.find((element) =>
+      element.closest('header.py-4.px-6.flex-initial.text-large.font-semibold.flex.flex-col.gap-1')
+    );
+    expect(headerElement).toBeInTheDocument();
+    expect(headerElement).toHaveTextContent('Edit User');
+    const emailElement = screen.getByLabelText('Email');
+    expect(emailElement).toBeInTheDocument();
+    fireEvent.change(emailElement, { target: { value: 'test@test.com' } });
+    const submitButton = screen.getByRole('button', { name: /submit/i });
+    await userEvent.click(submitButton);
+    const nowEmail = screen.getByText('test@test.com');
+    expect(nowEmail).toBeInTheDocument();
   });
 });
