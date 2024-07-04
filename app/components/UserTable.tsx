@@ -25,7 +25,7 @@ const columns = [
   { name: 'ACTIONS', uid: 'actions' }
 ];
 
-export default function UserTable() {
+export default function UserTable({ onEdit }: { onEdit: () => void }) {
   const dispatch = useDispatch<AppDispatch>();
   const { userList, removeToEmpty } = useSelector((state: RootState) => state.userReducer);
 
@@ -59,9 +59,12 @@ export default function UserTable() {
         return (
           <div className='relative flex items-center gap-2'>
             <Tooltip content='Edit user'>
-              <span className='text-lg text-default-400 cursor-pointer active:opacity-50'>
+              <button
+                className='text-lg text-default-400 cursor-pointer active:opacity-50'
+                onClick={onEdit}
+              >
                 <EditIcon />
-              </span>
+              </button>
             </Tooltip>
             <Tooltip color='danger' content='Delete user'>
               <button
