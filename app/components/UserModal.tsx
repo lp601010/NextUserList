@@ -110,7 +110,7 @@ export default function UserModal({ isOpen, onOpenChange, isAdd }: UserModalProp
                 <Input
                   type='email'
                   label='Email'
-                  inputMode='numeric'
+                  inputMode='email'
                   isRequired={true}
                   isInvalid={!!errors.email}
                   errorMessage={<>{errors.email?.message}</>}
