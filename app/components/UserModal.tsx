@@ -78,6 +78,7 @@ export default function UserModal({ isOpen, onOpenChange, isAdd }: UserModalProp
       }}
       className='overflow-y-auto'
       style={{ maxHeight: '80%' }}
+      shouldBlockScroll={false}
     >
       <form
         className='w-full max-w-xl flex flex-row items-end gap-4'

@@ -45,77 +45,77 @@
         "id": 8,
         "name": "Niclace",
         "age": "24",
-        "email": "Niclace@example.com",
+        "email": "Nicl@example.com",
         "phone": "0801123312"
     },
     {
         "id": 9,
         "name": "Katrina Stevenson",
         "age": "42",
-        "email": "nelsonbianca@carter-pitts.com",
+        "email": "nelianca@car.com",
         "phone": "220.942.0447"
     },
     {
         "id": 10,
         "name": "Dr. Pamela Alvarez",
         "age": "63",
-        "email": "emorris@adams-stone.com",
+        "email": "emorris@ad.com",
         "phone": "2053187697"
     },
     {
         "id": 11,
         "name": "Nicole Neal",
         "age": "59",
-        "email": "ariasdavid@chen-watson.org",
+        "email": "ariasdavid@on.org",
         "phone": "008.373.5886x1238"
     },
     {
         "id": 12,
         "name": "Mr. Jeremy Bender",
         "age": "80",
-        "email": "gregorymarc@hotmail.com",
+        "email": "grec@hotmail.com",
         "phone": "874-876-7784x0346"
     },
     {
         "id": 13,
         "name": "Karen Stokes",
         "age": "23",
-        "email": "holly94@brown-logan.com",
+        "email": "holly94@brow.com",
         "phone": "(056)787-9715"
     },
     {
         "id": 14,
         "name": "Robin Morris",
         "age": "27",
-        "email": "kristabrown@hotmail.com",
+        "email": "kwn@hotmail.com",
         "phone": "229-973-6132x761"
     },
     {
         "id": 15,
         "name": "Donald Duarte",
         "age": "38",
-        "email": "nandrews@hotmail.com",
+        "email": "nans@hotmail.com",
         "phone": "834-089-9070x38967"
     },
     {
         "id": 16,
         "name": "Patrick Phillips",
         "age": "34",
-        "email": "olivia10@pierce.com",
+        "email": "ol10@pierce.com",
         "phone": "+1-591-155-5342x6348"
     },
     {
         "id": 120,
         "name": "Jennifer Baldwin",
         "age": "66",
-        "email": "christinaolson@gmail.com",
+        "email": "chris@gmail.com",
         "phone": "809.568.9359"
     },
     {
         "id": 300,
         "name": "Jennifer Solis",
         "age": "65",
-        "email": "travis06@lambert-vega.com",
+        "email": "ts06@lambert.com",
         "phone": "001-977-244-8208"
     }
   ]
