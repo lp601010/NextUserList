@@ -6,10 +6,10 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'InYouUsers',
+  title: 'NextUserList',
   description: 'Created Using Next.js 14 and Next UI',
   appleWebApp: {
-    title: 'InYouUsers',
+    title: 'NextUserList',
     statusBarStyle: 'default'
   }
 };

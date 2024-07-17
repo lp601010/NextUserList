@@ -1,6 +1,6 @@
 <div align="center">
 <img src="./public/logo.png" alt="icon"/>
-<h1 align="center">InYouUsers</h1>
+<h1 align="center">NextUserList</h1>
 A simple user mangement project for empoyment testing
 
 Supported by React v18/Next v14/Redux/Nextui/react-hook-form
@@ -22,9 +22,9 @@ Supported by React v18/Next v14/Redux/Nextui/react-hook-form
 ## How to develop
 
 ```shell
-git clone https://github.com/lp601010/InYouUsers.git
+git clone https://github.com/lp601010/NextUserList.git
 
-cd in-you-users
+cd next-user-list
 
 npm install
 npm run prepare
